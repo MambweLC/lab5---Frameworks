@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Daily News</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sports</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    Latest updates: <span id="live-time" class="fw-bold"></span>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Two-column layout -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main content -->
+            <div class="col-md-8">
+                <div class="alert alert-info">
+                    <strong>Breaking:</strong> New AI model achieves human-level performance in creative writing
+                </div>
+                
+                <article class="mb-4">
+                    <h2>Tech Giants Samsung unveils its latest flagship, the Samsung Galaxy S25 Ultra!</h2>
+                    <p class="text-muted">Published: <span id="current-date"></span></p>
+                    <img src="THUMB_Galaxy-S25ultra-Media-Asset-Thumb-1440x960.jpg" class="img-fluid rounded mb-3" alt="New smartphone">
+                    <p>The company announced its latest flagship device yesterday, featuring breakthrough battery technology that lasts up to 72 hours on a single charge...</p>
+                    <button class="btn btn-primary">Read Full Story</button>
+                </article>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header bg-success text-white">
+                        Weather Update
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Current Conditions</h5>
+                        <p class="card-text">
+                            <strong id="weather-temp">24°C</strong> | 
+                            <span id="weather-desc">Partly Cloudy</span>
+                        </p>
+                        <button class="btn btn-sm btn-outline-success" onclick="refreshWeather()">
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Stock Market Hits Record High</h6>
+                            <small>2 hours ago</small>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">New Study on Coffee Benefits</h6>
+                            <small>4 hours ago</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dynamic time display
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('live-time').textContent = now.toLocaleTimeString();
+            document.getElementById('current-date').textContent = now.toLocaleDateString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Simulate weather changes
+        function refreshWeather() {
+            const temps = [22, 24, 26, 20, 18];
+            const descs = ['Sunny', 'Partly Cloudy', 'Rainy', 'Windy'];
+            document.getElementById('weather-temp').textContent = 
+                temps[Math.floor(Math.random() * temps.length)] + '°C';
+            document.getElementById('weather-desc').textContent = 
+                descs[Math.floor(Math.random() * descs.length)];
+        }
+    </script>
+</body>
+</html>
